@@ -4,13 +4,12 @@ import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
 
-
 /**
  * The persistent class for the contratto database table.
  * 
  */
 @Entity
-@NamedQuery(name="Contratto.findAll", query="SELECT c FROM Contratto c")
+@NamedQuery(name = "Contratto.findAll", query = "SELECT c FROM Contratto c")
 public class Contratto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,37 +17,50 @@ public class Contratto implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name="costo_gg")
+	@Column(name = "costo_gg")
 	private float costoGg;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_fine_contratto")
+	@Column(name = "data_fine_contratto")
 	private Date dataFineContratto;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name="data_inizio_contratto")
+	@Column(name = "data_inizio_contratto")
 	private Date dataInizioContratto;
 
 	private int livello;
 
 	private String note;
 
-	@Column(name="retribuzione_lorda")
+	@Column(name = "retribuzione_lorda")
 	private float retribuzioneLorda;
 
-	@Column(name="rimborso_spese_mensili")
+	@Column(name = "rimborso_spese_mensili")
 	private float rimborsoSpeseMensili;
 
-	//bi-directional many-to-one association to Dipendente
+	// bi-directional many-to-one association to Dipendente
 	@ManyToOne
 	private Dipendente dipendente;
 
-	//bi-directional many-to-one association to TipologiaContratto
+	// bi-directional many-to-one association to TipologiaContratto
 	@ManyToOne
-	@JoinColumn(name="tipologia_contratto")
+	@JoinColumn(name = "tipologia_contratto")
 	private TipologiaContratto tipologiaContrattoBean;
 
 	public Contratto() {
+	}
+
+	public Contratto(float costoGg, Date dataFineContratto, Date dataInizioContratto, int livello, String note,
+			float retribuzioneLorda, float rimborsoSpeseMensili, TipologiaContratto tipologiaContrattoBean) {
+		super();
+		this.costoGg = costoGg;
+		this.dataFineContratto = dataFineContratto;
+		this.dataInizioContratto = dataInizioContratto;
+		this.livello = livello;
+		this.note = note;
+		this.retribuzioneLorda = retribuzioneLorda;
+		this.rimborsoSpeseMensili = rimborsoSpeseMensili;
+		this.tipologiaContrattoBean = tipologiaContrattoBean;
 	}
 
 	public int getId() {

@@ -38,6 +38,20 @@ public class Cliente implements Serializable {
 
 	public Cliente() {
 	}
+	
+	
+
+	public Cliente(String partitaIva, String codiceFiscale, String codiceInterscambio, String pec,
+			String regioneSociale, String sedeLegale) {
+		this.partitaIva = partitaIva;
+		this.codiceFiscale = codiceFiscale;
+		this.codiceInterscambio = codiceInterscambio;
+		this.pec = pec;
+		this.regioneSociale = regioneSociale;
+		this.sedeLegale = sedeLegale;
+	}
+
+
 
 	public String getPartitaIva() {
 		return this.partitaIva;
